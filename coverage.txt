@@ -1,0 +1,18 @@
+
+
+Code Coverage Report:       
+  2016-04-26 22:23:47       
+                            
+ Summary:                   
+  Classes: 100.00% (5/5)    
+  Methods: 100.00% (79/79)  
+  Lines:   100.00% (351/351)
+
+\database\MySqlQueryBuilderBundle\builder::DbQueryBuilder
+  Methods: 100.00% (24/24)   Lines: 100.00% ( 55/ 55)
+\database\MySqlQueryBuilderBundle\converter::MySqlDefaultConverter
+  Methods: 100.00% (17/17)   Lines: 100.00% (154/154)
+\database\MySqlQueryBuilderBundle\model::QueryModel
+  Methods: 100.00% (23/23)   Lines: 100.00% ( 45/ 45)
+\database\MySqlQueryBuilderBundle\sql::MySqlBuilder
+  Methods: 100.00% (15/15)   Lines: 100.00% ( 97/ 97)
