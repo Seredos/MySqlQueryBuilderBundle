@@ -1,6 +1,6 @@
 <?php
 use database\MySqlQueryBuilderBundle\converter\MySqlDefaultConverter;
-use database\MySqlQueryBuilderBundle\builder\DbQueryBuilder;
+use database\MySqlQueryBuilderBundle\builder\MySqlQueryBuilder;
 use database\MySqlQueryBuilderBundle\model\QueryModel;
 use database\MySqlQueryBuilderBundle\converter\QueryConversionException;
 use database\MySqlQueryBuilderBundle\sql\MySqlBuilder;
@@ -11,7 +11,7 @@ use database\MySqlQueryBuilderBundle\sql\MySqlBuilder;
  * Date: 24.04.2016
  * Time: 10:29
  */
-class DbQueryBuilderFunctionalDatabaseTest extends PHPUnit_Framework_TestCase {
+class MySqlQueryBuilderFunctionalDatabaseTest extends PHPUnit_Framework_TestCase {
     /**
      * @var MySqlDefaultConverter
      */
@@ -140,16 +140,16 @@ class DbQueryBuilderFunctionalDatabaseTest extends PHPUnit_Framework_TestCase {
     private function createQueryBuilder () {
         $queryModel = new QueryModel();
 
-        return new DbQueryBuilder($queryModel);
+        return new MySqlQueryBuilder($queryModel);
     }
 
     /**
-     * @param DbQueryBuilder $builder
+     * @param MySqlQueryBuilder $builder
      *
      * @return PDOStatement
      * @throws QueryConversionException
      */
-    private function buildStatement (DbQueryBuilder $builder) {
+    private function buildStatement (MySqlQueryBuilder $builder) {
         $this->converter->validate($builder->getModel());
         $this->sqlBuilder->buildQuery($builder->getModel());
 

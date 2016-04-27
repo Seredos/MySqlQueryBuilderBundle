@@ -11,7 +11,7 @@ namespace database\MySqlQueryBuilderBundle\builder;
 
 use database\MySqlQueryBuilderBundle\model\QueryModel;
 
-class DbQueryBuilder {
+class MySqlQueryBuilder {
     /**
      * @var QueryModel
      */
@@ -31,7 +31,7 @@ class DbQueryBuilder {
     /**
      * @param null|string|string[] $select
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function select ($select = null) {
         $this->queryModel->setType(QueryModel::QUERY_TYPE_SELECT);
@@ -44,7 +44,7 @@ class DbQueryBuilder {
     /**
      * @param null|string|string[] $select
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function addSelect ($select = null) {
         if ($select != null) {
@@ -57,7 +57,7 @@ class DbQueryBuilder {
     /**
      * @param string $from
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function insert ($from) {
         $this->queryModel->setType(QueryModel::QUERY_TYPE_INSERT);
@@ -69,7 +69,7 @@ class DbQueryBuilder {
     /**
      * @param string $from
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function update ($from) {
         $this->queryModel->setType(QueryModel::QUERY_TYPE_UPDATE);
@@ -81,7 +81,7 @@ class DbQueryBuilder {
     /**
      * @param string $from
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function delete ($from) {
         $this->queryModel->setType(QueryModel::QUERY_TYPE_DELETE);
@@ -105,7 +105,7 @@ class DbQueryBuilder {
      * @param string $from
      * @param string $alias
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function from ($from, $alias) {
         $this->queryModel->setFrom(['table' => $from, 'alias' => $alias]);
@@ -119,7 +119,7 @@ class DbQueryBuilder {
      * @param string $conditionType
      * @param string $condition
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function leftJoin ($join, $alias, $conditionType, $condition) {
         return $this->join($join, $alias, $conditionType, $condition, 'LEFT');
@@ -131,7 +131,7 @@ class DbQueryBuilder {
      * @param string $conditionType
      * @param string $condition
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function innerJoin ($join, $alias, $conditionType, $condition) {
         return $this->join($join, $alias, $conditionType, $condition);
@@ -144,7 +144,7 @@ class DbQueryBuilder {
      * @param string $condition
      * @param string $joinType
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function join ($join, $alias, $conditionType, $condition, $joinType = 'INNER') {
         $this->queryModel->addJoin(['joinType' => $joinType,
@@ -159,7 +159,7 @@ class DbQueryBuilder {
     /**
      * @param string $where
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function where ($where) {
         $this->queryModel->setWhere([]);
@@ -170,7 +170,7 @@ class DbQueryBuilder {
     /**
      * @param string $where
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function andWhere ($where) {
         return $this->whereExpression($where);
@@ -179,7 +179,7 @@ class DbQueryBuilder {
     /**
      * @param string $where
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function orWhere ($where) {
         return $this->whereExpression($where, 'OR');
@@ -188,7 +188,7 @@ class DbQueryBuilder {
     /**
      * @param string|string[] $groupBy
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function groupBy ($groupBy) {
         $this->queryModel->setGroupBy([]);
@@ -199,7 +199,7 @@ class DbQueryBuilder {
     /**
      * @param string|string[] $groupBy
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function addGroupBy ($groupBy) {
         if ($groupBy != null) {
@@ -212,7 +212,7 @@ class DbQueryBuilder {
     /**
      * @param string $having
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function having ($having) {
         $this->queryModel->setHaving([]);
@@ -223,7 +223,7 @@ class DbQueryBuilder {
     /**
      * @param string $having
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function andHaving ($having) {
         return $this->havingExpression($having);
@@ -232,7 +232,7 @@ class DbQueryBuilder {
     /**
      * @param string $having
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function orHaving ($having) {
         return $this->havingExpression($having, 'OR');
@@ -242,7 +242,7 @@ class DbQueryBuilder {
      * @param string|string[] $sort
      * @param string          $order
      *
-     * @return DbQueryBuilder
+     * @return MySqlQueryBuilder
      */
     public function orderBy ($sort, $order = 'ASC') {
         $this->queryModel->addOrderBy(['sort' => $this->valueToArray($sort), 'order' => $order]);

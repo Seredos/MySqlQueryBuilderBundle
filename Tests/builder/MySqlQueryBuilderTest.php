@@ -1,6 +1,6 @@
 <?php
-use database\MySqlQueryBuilderBundle\builder\DbQueryBuilder;
-use database\MySqlQueryBuilderBundle\Tests\builder\DbQueryBuilderMockBuilder;
+use database\MySqlQueryBuilderBundle\builder\MySqlQueryBuilder;
+use database\MySqlQueryBuilderBundle\Tests\builder\MySqlQueryBuilderMockBuilder;
 
 /**
  * Created by PhpStorm.
@@ -8,21 +8,21 @@ use database\MySqlQueryBuilderBundle\Tests\builder\DbQueryBuilderMockBuilder;
  * Date: 15.04.2016
  * Time: 22:06
  */
-class DbQueryBuilderTest extends PHPUnit_Framework_TestCase {
+class MySqlQueryBuilderTest extends PHPUnit_Framework_TestCase {
     /**
-     * @var DbQueryBuilderMockBuilder
+     * @var MySqlQueryBuilderMockBuilder
      */
     private $mockBuilder;
 
     public function setUp () {
-        $this->mockBuilder = new DbQueryBuilderMockBuilder($this);
+        $this->mockBuilder = new MySqlQueryBuilderMockBuilder($this);
     }
 
     /**
      * @test
      */
     public function select_and_addSelect () {
-        $queryBuilder = new DbQueryBuilder($this->mockBuilder->buildSelectMock());
+        $queryBuilder = new MySqlQueryBuilder($this->mockBuilder->buildSelectMock());
 
         //add first select column
         $this->assertSame($queryBuilder, $queryBuilder->select('u.id'));
@@ -47,7 +47,7 @@ class DbQueryBuilderTest extends PHPUnit_Framework_TestCase {
      * @test
      */
     public function insert () {
-        $queryBuilder = new DbQueryBuilder($this->mockBuilder->buildInsertMock());
+        $queryBuilder = new MySqlQueryBuilder($this->mockBuilder->buildInsertMock());
 
         //set insert table
         $this->assertSame($queryBuilder, $queryBuilder->insert('example1'));
@@ -60,7 +60,7 @@ class DbQueryBuilderTest extends PHPUnit_Framework_TestCase {
      * @test
      */
     public function update () {
-        $queryBuilder = new DbQueryBuilder($this->mockBuilder->buildUpdateMock());
+        $queryBuilder = new MySqlQueryBuilder($this->mockBuilder->buildUpdateMock());
 
         //set update table
         $this->assertSame($queryBuilder, $queryBuilder->update('example1'));
@@ -73,7 +73,7 @@ class DbQueryBuilderTest extends PHPUnit_Framework_TestCase {
      * @test
      */
     public function delete () {
-        $queryBuilder = new DbQueryBuilder($this->mockBuilder->buildDeleteMock());
+        $queryBuilder = new MySqlQueryBuilder($this->mockBuilder->buildDeleteMock());
 
         //set delete table
         $this->assertSame($queryBuilder, $queryBuilder->delete('example1'));
@@ -86,7 +86,7 @@ class DbQueryBuilderTest extends PHPUnit_Framework_TestCase {
      * @test
      */
     public function values () {
-        $queryBuilder = new DbQueryBuilder($this->mockBuilder->buildValuesMock());
+        $queryBuilder = new MySqlQueryBuilder($this->mockBuilder->buildValuesMock());
 
         //set values
         $this->assertSame($queryBuilder, $queryBuilder->values(['column2' => 'value2', 'column1' => 'value1']));
@@ -99,7 +99,7 @@ class DbQueryBuilderTest extends PHPUnit_Framework_TestCase {
      * @test
      */
     public function from () {
-        $queryBuilder = new DbQueryBuilder($this->mockBuilder->buildFromMock());
+        $queryBuilder = new MySqlQueryBuilder($this->mockBuilder->buildFromMock());
 
         //set from
         $this->assertSame($queryBuilder, $queryBuilder->from('user', 'u'));
@@ -112,7 +112,7 @@ class DbQueryBuilderTest extends PHPUnit_Framework_TestCase {
      * @test
      */
     public function innerJoin () {
-        $queryBuilder = new DbQueryBuilder($this->mockBuilder->buildInnerJoinMock());
+        $queryBuilder = new MySqlQueryBuilder($this->mockBuilder->buildInnerJoinMock());
 
         //add a first innerJoin with the join method
         $this->assertSame($queryBuilder, $queryBuilder->join('group', 'g', 'WITH', 'g.id = p.group_id'));
@@ -125,7 +125,7 @@ class DbQueryBuilderTest extends PHPUnit_Framework_TestCase {
      * @test
      */
     public function leftJoin () {
-        $queryBuilder = new DbQueryBuilder($this->mockBuilder->buildLeftJoinMock());
+        $queryBuilder = new MySqlQueryBuilder($this->mockBuilder->buildLeftJoinMock());
 
         //add a first leftJoin with the join method
         $this->assertSame($queryBuilder, $queryBuilder->join('group', 'g', 'WITH', 'g.id = p.group_id', 'LEFT'));
@@ -138,7 +138,7 @@ class DbQueryBuilderTest extends PHPUnit_Framework_TestCase {
      * @test
      */
     public function where_andWhere_orWhere () {
-        $queryBuilder = new DbQueryBuilder($this->mockBuilder->buildWhereMock());
+        $queryBuilder = new MySqlQueryBuilder($this->mockBuilder->buildWhereMock());
 
         //set the first where expression
         $this->assertSame($queryBuilder, $queryBuilder->where('u.id = :user'));
@@ -157,7 +157,7 @@ class DbQueryBuilderTest extends PHPUnit_Framework_TestCase {
      * @test
      */
     public function groupBy_addGroupBy () {
-        $queryBuilder = new DbQueryBuilder($this->mockBuilder->buildGroupByMock());
+        $queryBuilder = new MySqlQueryBuilder($this->mockBuilder->buildGroupByMock());
 
         //set first groupBy column
         $this->assertSame($queryBuilder, $queryBuilder->groupBy('u.id'));
@@ -176,7 +176,7 @@ class DbQueryBuilderTest extends PHPUnit_Framework_TestCase {
      * @test
      */
     public function having_andHaving_orHaving () {
-        $queryBuilder = new DbQueryBuilder($this->mockBuilder->buildHavingMock());
+        $queryBuilder = new MySqlQueryBuilder($this->mockBuilder->buildHavingMock());
 
         //set the first having expression
         $this->assertSame($queryBuilder, $queryBuilder->having('name = :name'));
@@ -192,7 +192,7 @@ class DbQueryBuilderTest extends PHPUnit_Framework_TestCase {
      * @test
      */
     public function orderBy () {
-        $queryBuilder = new DbQueryBuilder($this->mockBuilder->buildOrderByMock());
+        $queryBuilder = new MySqlQueryBuilder($this->mockBuilder->buildOrderByMock());
 
         //set the first ASC order
         $this->assertSame($queryBuilder, $queryBuilder->orderBy('u.id'));

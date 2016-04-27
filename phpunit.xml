@@ -12,11 +12,11 @@
             <file>Tests/converter/MySqlDefaultConverterTest.php</file>
             <file>Tests/model/QueryModelTest.php</file>
             <file>Tests/sql/MySqlBuilderTest.php</file>
-            <file>Tests/builder/DbQueryBuilderTest.php</file>
+            <file>Tests/builder/MySqlQueryBuilderTest.php</file>
         </testsuite>
         <testsuite name="mysql query builder functional tests">
-            <file>Tests/builder/DbQueryBuilderFunctionalTest.php</file>
-            <file>Tests/builder/DbQueryBuilderFunctionalDatabaseTest.php</file>
+            <file>Tests/builder/MySqlQueryBuilderFunctionalTest.php</file>
+            <file>Tests/builder/MySqlQueryBuilderFunctionalDatabaseTest.php</file>
         </testsuite>
     </testsuites>
     <filter>

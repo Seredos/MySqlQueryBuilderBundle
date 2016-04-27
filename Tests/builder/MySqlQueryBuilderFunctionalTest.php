@@ -1,6 +1,6 @@
 <?php
 use database\MySqlQueryBuilderBundle\converter\MySqlDefaultConverter;
-use database\MySqlQueryBuilderBundle\builder\DbQueryBuilder;
+use database\MySqlQueryBuilderBundle\builder\MySqlQueryBuilder;
 use database\MySqlQueryBuilderBundle\model\QueryModel;
 use database\MySqlQueryBuilderBundle\sql\MySqlBuilder;
 
@@ -10,9 +10,9 @@ use database\MySqlQueryBuilderBundle\sql\MySqlBuilder;
  * Date: 17.04.2016
  * Time: 22:56
  */
-class DbQueryBuilderFunctionalTest extends PHPUnit_Framework_TestCase {
+class MySqlQueryBuilderFunctionalTest extends PHPUnit_Framework_TestCase {
     /**
-     * @var DbQueryBuilder
+     * @var MySqlQueryBuilder
      */
     private $queryBuilder;
 
@@ -35,7 +35,7 @@ class DbQueryBuilderFunctionalTest extends PHPUnit_Framework_TestCase {
         $this->queryConverter = new MySqlDefaultConverter();
 
         $this->queryModel = new QueryModel();
-        $this->queryBuilder = new DbQueryBuilder($this->queryModel);
+        $this->queryBuilder = new MySqlQueryBuilder($this->queryModel);
     }
 
     /**

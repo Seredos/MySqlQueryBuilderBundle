@@ -10,7 +10,7 @@ use PHPUnit_Framework_MockObject_MockObject;
  * Date: 17.04.2016
  * Time: 04:39
  */
-class DbQueryBuilderMockBuilder {
+class MySqlQueryBuilderMockBuilder {
     /**
      * @var \PHPUnit_Framework_TestCase
      */
