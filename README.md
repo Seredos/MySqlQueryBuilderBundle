@@ -8,7 +8,7 @@ add the builder bundle in your composer.json as below:
 ```js
 "require": {
     ...
-    "database/MySqlQueryBuilderBundle" : "dev-master",
+    "Seredos/database/MySqlQueryBuilderBundle" : "dev-master",
 },
 "repositories" : [
                     ...
